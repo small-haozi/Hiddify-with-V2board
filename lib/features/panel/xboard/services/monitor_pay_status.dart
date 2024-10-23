@@ -26,7 +26,7 @@ class MonitorPayStatus {
       try {
         final orderDetails = await getOrderDetails(tradeNo, accessToken);
 
-        if (orderDetails['status'] == 'success') {
+        if (orderDetails['data'] == true) {
           final orderData = orderDetails['data'];
 
           // 检查订单是否被取消
@@ -45,7 +45,7 @@ class MonitorPayStatus {
             timer.cancel(); // 停止轮询
           }
         } else {
-          print("Failed to get valid order status: ${orderDetails['message']}");
+          print("Failed to get valid order ");
         }
       } catch (e) {
         print("Error while checking order status: $e");
