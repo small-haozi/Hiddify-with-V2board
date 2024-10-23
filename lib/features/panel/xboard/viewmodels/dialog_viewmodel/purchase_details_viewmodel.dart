@@ -52,15 +52,17 @@ class PurchaseDetailsViewModel extends ChangeNotifier {
         selectedPeriod!,
         accessToken,
       );
-
-      if (orderResponse != null ) {
+      
+      final paymentMethods =
+          await _purchaseService.getPaymentMethods(accessToken);
+      return paymentMethods;
+      
+      if (orderResponse != null && orderResponse.isNotEmpty ) {
         tradeNo = orderResponse['data']?.toString();
         if (kDebugMode) {
           print("订单创建成功 订单号$tradeNo");
         }
-        final paymentMethods =
-            await _purchaseService.getPaymentMethods(accessToken);
-        return paymentMethods;
+
       } else {
         if (kDebugMode) {
           print('订单创建失败: ${orderResponse?['message']}');
