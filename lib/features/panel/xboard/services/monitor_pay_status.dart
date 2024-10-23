@@ -26,7 +26,7 @@ class MonitorPayStatus {
       try {
         final orderDetails = await getOrderDetails(tradeNo, accessToken);
 
-        if (orderDetails['data'] == true) {
+        if (orderDetails['data'] == 0) {
           final orderData = orderDetails['data'];
 
           // 检查订单是否被取消
