@@ -18,7 +18,7 @@ class OrderService {
           .map((json) => Order.fromJson(json as Map<String, dynamic>))
           .toList();
     } else {
-      throw Exception("Failed to fetch user orders: ${result['message']}");
+      throw Exception("查找订单失败");
     }
   }
 
