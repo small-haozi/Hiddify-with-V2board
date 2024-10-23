@@ -35,25 +35,26 @@ class PaymentMethodsViewModel extends ChangeNotifier {
       }
 
       // 获取 type 和 data 字段
-      //final type = response['type'];    注释
+      final type = response['type'];
       final data = response['data'];
 
       // 确保 type 是 int 并且 data 是期望的类型
-      //if (type is int) {
+      if (type is int) {
         // 如果 type 为 -1 且 data 为 true，表示订单已通过钱包余额支付成功
-      if (data == true) {
-        if (kDebugMode) {
-          print('订单已通过钱包余额支付成功，无需跳转支付页面');
+        if (type == -1 && data == true) {
+          if (kDebugMode) {
+            print('订单已通过钱包余额支付成功，无需跳转支付页面');
+          }
+          handlePaymentSuccess(); // 直接处理支付成功
+          return;
         }
-        handlePaymentSuccess(); // 直接处理支付成功
-        return;
-      }
 
         // 如果 type 为 1 且 data 是 String 类型，认为它是支付链接
-      if (data is String) {
-        openPaymentUrl(data); // 打开支付链接
-        monitorOrderStatus(); // 开始监听订单状态
-        return;
+        if (type == 1 && data is String) {
+          openPaymentUrl(data); // 打开支付链接
+          monitorOrderStatus(); // 开始监听订单状态
+          return;
+        }
       }
       
 
