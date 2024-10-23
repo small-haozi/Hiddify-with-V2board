@@ -3,7 +3,6 @@ class Order {
   final String? tradeNo;
   final double? totalAmount;
   final String? period;
-  final int? status;
   final int? createdAt; // 新增的创建时间字段
   final OrderPlan? orderPlan;
 
@@ -12,7 +11,6 @@ class Order {
     this.tradeNo,
     this.totalAmount,
     this.period,
-    this.status,
     this.createdAt, // 初始化创建时间字段
     this.orderPlan,
   });
@@ -23,7 +21,6 @@ factory Order.fromJson(Map<String, dynamic> json) {
       tradeNo: json['trade_no'] as String?,
       totalAmount: (json['total_amount'] as num?)?.toDouble(),
       period: json['period'] as String?,
-      status: json['status'] as int?,
       createdAt: json['created_at'] as int?,
       orderPlan: json['plan'] != null
           ? OrderPlan.fromJson(json['plan'] as Map<String, dynamic>)
