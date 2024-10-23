@@ -22,8 +22,8 @@ class PurchaseDetailsViewModel extends ChangeNotifier {
   });
 
   void setSelectedPrice(double? price, String? period) {
-    selectedPrice = price;
     selectedPeriod = period;
+    selectedPrice = price;
     notifyListeners();
   }
 
