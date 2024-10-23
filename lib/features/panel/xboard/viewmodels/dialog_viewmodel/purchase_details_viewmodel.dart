@@ -67,6 +67,7 @@ class PurchaseDetailsViewModel extends ChangeNotifier {
         if (kDebugMode) {
           print('订单创建失败，未返回有效数据');
         }
+        return [];
       }
     } catch (e) {
       if (kDebugMode) {
