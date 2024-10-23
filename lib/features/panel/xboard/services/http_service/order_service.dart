@@ -12,11 +12,14 @@ class OrderService {
       headers: {'Authorization': accessToken},
     );
 
-    
-    final ordersJson = result["data"] as List;
-    return ordersJson
-        .map((json) => Order.fromJson(json as Map<String, dynamic>))
-        .toList();
+    if (result["data"] != null) {
+      final ordersJson = result["data"] as List;
+      return ordersJson
+          .map((json) => Order.fromJson(json as Map<String, dynamic>))
+          .toList();
+    } else {
+      throw Exception("Failed to fetch user orders: ${result['message']}");
+    }
   }
 
   Future<Map<String, dynamic>> getOrderDetails(
