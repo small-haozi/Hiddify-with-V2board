@@ -33,12 +33,6 @@ class PurchaseService {
   final PaymentService _paymentService = PaymentService();
 
   Future<List<dynamic>> getPaymentMethods(String accessToken) async {
-    final accessToken = await getToken(); // 确保获取到有效的 token
-    if (accessToken == null) {
-      print("No access token found.");
-      return [];
-    }
-    
     return await _paymentService.getPaymentMethods(accessToken);
   }
   
