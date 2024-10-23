@@ -55,7 +55,7 @@ class PurchaseDetailsViewModel extends ChangeNotifier {
       
       
       
-      if (orderResponse["data"] != null ) {
+      if (orderResponse != null ) {
         tradeNo = orderResponse['data']?.toString();
         if (kDebugMode) {
           print("订单创建成功 订单号$tradeNo");
