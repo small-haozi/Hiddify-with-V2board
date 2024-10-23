@@ -55,19 +55,18 @@ class PurchaseDetailsViewModel extends ChangeNotifier {
       
       
       
-      if (orderResponse != null ) {
-        tradeNo = orderResponse['data']?.toString();
+      if (orderResponse['data'] != null) {
+        tradeNo = orderResponse['data']['tradeNo']?.toString();
         if (kDebugMode) {
-          print("订单创建成功 订单号$tradeNo");
+          print("订单创建成功 订单号: $tradeNo");
         }
         final paymentMethods =
             await _purchaseService.getPaymentMethods(accessToken);
         return paymentMethods;
       } else {
         if (kDebugMode) {
-          print('订单创建失败');
+          print('订单创建失败，未返回有效数据');
         }
-        return [];
       }
     } catch (e) {
       if (kDebugMode) {
