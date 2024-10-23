@@ -65,7 +65,7 @@ class PurchaseDetailsViewModel extends ChangeNotifier {
         return paymentMethods;
       } else {
         if (kDebugMode) {
-          print('订单创建失败: ${orderResponse?['message']}');
+          print('订单创建失败');
         }
         return [];
       }
