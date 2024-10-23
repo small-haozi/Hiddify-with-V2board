@@ -30,16 +30,16 @@ class MonitorPayStatus {
           final orderData = orderDetails['data'];
 
           // 检查订单是否被取消
-          if (orderData['status'] is int && orderData['status'] == 2) {
+          if (orderData['data'] is int && orderData['data'] == 2) {
             isPaymentComplete = true; // 停止轮询
             timer.cancel();
             return;
           }
 
           // 检查订单是否已支付
-          if (orderData['status'] is int && orderData['status'] == 0) {
+          if (orderData['data'] is int && orderData['data'] == 0) {
             onPaymentStatusChanged(false); // 通知支付未完成
-          } else if (orderData['status'] is int && orderData['status'] == 3) {
+          } else if (orderData['data'] is int && orderData['data'] == 3) {
             isPaymentComplete = true; // 标记支付完成
             onPaymentStatusChanged(true); // 通知支付完成
             timer.cancel(); // 停止轮询
