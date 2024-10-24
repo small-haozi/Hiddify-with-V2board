@@ -37,7 +37,6 @@ class OrderService {
       jsonEncode({"trade_no": tradeNo}), // 确保载荷是 JSON 格式
       headers: {
         'Authorization': accessToken,
-        'Content-Type': 'application/json',// 设置内容类型为 JSON
       },
     );
   }
@@ -49,7 +48,6 @@ class OrderService {
       jsonEncode({"plan_id": planId, "period": period}),
       headers: {
         'Authorization': accessToken,
-        'Content-Type': 'application/json', // 设置内容类型为 JSON
       },
     );
   }
