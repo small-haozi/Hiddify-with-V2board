@@ -36,8 +36,9 @@ class OrderService {
       "/api/v1/user/order/cancel",
       jsonEncode({"trade_no": tradeNo}), // 确保载荷是 JSON 格式
       headers: {
-        'Authorization': accessToken},
-        'Content-Type': 'application/json', // 设置内容类型为 JSON
+        'Authorization': accessToken,
+        'Content-Type': 'application/json',// 设置内容类型为 JSON
+      },
     );
   }
 
@@ -47,8 +48,9 @@ class OrderService {
       "/api/v1/user/order/save",
       jsonEncode({"plan_id": planId, "period": period}),
       headers: {
-        'Authorization': accessToken},
+        'Authorization': accessToken,
         'Content-Type': 'application/json', // 设置内容类型为 JSON
+      },
     );
   }
 }
