@@ -34,7 +34,7 @@ class OrderService {
       String tradeNo, String accessToken) async {
     return await _httpService.postRequest(
       "/api/v1/user/order/cancel",
-      {"trade_no": tradeNo}, 
+      {"trade_no": tradeNo.toString()}, 
       headers: {
         'Authorization': accessToken},
       
@@ -45,9 +45,8 @@ class OrderService {
       String accessToken, int planId, String period) async {
     return await _httpService.postRequest(
       "/api/v1/user/order/save",
-      {"plan_id": planId, "period": period},
-      headers: {
-        'Authorization': accessToken},
+      {"plan_id": planId.toString(), "period": period},
+      headers: {'Authorization': accessToken},
     );
   }
 }
