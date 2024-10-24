@@ -45,8 +45,10 @@ class OrderService {
       String accessToken, int planId, String period) async {
     return await _httpService.postRequest(
       "/api/v1/user/order/save",
-      {"plan_id": planId, "period": period},
-      headers: {'Authorization': accessToken},
+      jsonEncode({"plan_id": planId, "period": period}),
+      headers: {
+        'Authorization': accessToken},
+        'Content-Type': 'application/json', // 设置内容类型为 JSON
     );
   }
 }
