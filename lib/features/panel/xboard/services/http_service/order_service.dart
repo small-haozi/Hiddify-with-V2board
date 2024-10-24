@@ -34,7 +34,7 @@ class OrderService {
       String tradeNo, String accessToken) async {
     return await _httpService.postRequest(
       "/api/v1/user/order/cancel",
-      jsonEncode({"trade_no": tradeNo}), // 确保载荷是 JSON 格式
+      {"trade_no": tradeNo}, 
       headers: {
         'Authorization': accessToken},
       
@@ -45,7 +45,7 @@ class OrderService {
       String accessToken, int planId, String period) async {
     return await _httpService.postRequest(
       "/api/v1/user/order/save",
-      jsonEncode({"plan_id": planId, "period": period}),
+      {"plan_id": planId, "period": period},
       headers: {
         'Authorization': accessToken},
     );
