@@ -34,8 +34,10 @@ class OrderService {
       String tradeNo, String accessToken) async {
     return await _httpService.postRequest(
       "/api/v1/user/order/cancel",
-      {"trade_no": tradeNo},
-      headers: {'Authorization': accessToken},
+      jsonEncode({"trade_no": tradeNo}), // 确保载荷是 JSON 格式
+      headers: {
+        'Authorization': accessToken},
+        'Content-Type': 'application/json', // 设置内容类型为 JSON
     );
   }
 
