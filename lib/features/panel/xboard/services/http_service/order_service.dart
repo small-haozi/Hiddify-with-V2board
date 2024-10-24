@@ -45,7 +45,7 @@ class OrderService {
       String accessToken, int planId, String period) async {
     return await _httpService.postRequest(
       "/api/v1/user/order/save",
-      {"plan_id": planId.toString(), "period": period},
+      {"plan_id": planId.toString(), "period": period.toString()},
       headers: {'Authorization': accessToken},
     );
   }
