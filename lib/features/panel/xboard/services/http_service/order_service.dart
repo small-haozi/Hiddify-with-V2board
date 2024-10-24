@@ -36,8 +36,8 @@ class OrderService {
       "/api/v1/user/order/cancel",
       jsonEncode({"trade_no": tradeNo}), // 确保载荷是 JSON 格式
       headers: {
-        'Authorization': accessToken,
-      },
+        'Authorization': accessToken},
+      
     );
   }
 
@@ -47,8 +47,7 @@ class OrderService {
       "/api/v1/user/order/save",
       jsonEncode({"plan_id": planId, "period": period}),
       headers: {
-        'Authorization': accessToken,
-      },
+        'Authorization': accessToken},
     );
   }
 }
